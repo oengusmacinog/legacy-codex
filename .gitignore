@@ -7,3 +7,4 @@ composer.phar
 .env.*.php
 .env.php
 Thumbs.db
+/workbench
