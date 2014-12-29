@@ -2,13 +2,17 @@
 @import url(http://fonts.googleapis.com/css?family=Crete+Round);
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
 
+body, html, .row-offcanvas {
+	height: 100%;
+}
+
 body {
 	background: #eee;
 	font-family: 'Varela Round', sans-serif;
 	line-height: 1.5em;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
-	padding-top:61px;
+	padding-top: 61px;
 }
 
 nav ul {
@@ -21,26 +25,31 @@ h1, h2, h3, h4, h5 {
     font-family: 'Crete Round', serif;
 }
 
+#sidebar {
+	width: inherit;
+	min-width: 250px;
+	max-width: 250px;
+	background-color: #2F3030;
+	float: left;
+	height: 100%;
+	position: relative;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#main {
+	height: 100%;
+	overflow: auto;
+}
+
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
 }
 
-.toc.affix-top {
-	position: static;
-}
-
-.toc.affix {
-	position: fixed;
-	top: 61px;
-	width: 262px;
-}
-
 .toc {
-	padding: 45px 20px;
+	padding-top: 10px;
 	margin-bottom: 60px;
-	background: #2F3030;
-	border-radius: 0 0 5px 5px;
 }
 
 .toc ul li {
@@ -101,9 +110,6 @@ h1, h2, h3, h4, h5 {
 	background: #fff;
 	box-sizing: border-box;
 	padding: 20px;
-	margin-right: -15px;
-	margin-left: -15px;
-	border-radius: 0 0 5px 5px;
 }
 
 .documentation h2 {

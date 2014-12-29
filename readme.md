@@ -1,28 +1,25 @@
-# Codex
-**Codex** is a simple file-based Markdown documentation platform built on top of Laravel. It's completely customizable and dead simple to use to create beautiful documentation.
+## Laravel PHP Framework
 
-[![Author](http://img.shields.io/badge/author-Shea_Lewis-blue.svg?style=flat-square)](https://caffeinated.ninja)
-[![Source](http://img.shields.io/badge/source-caffeinated/codex-blue.svg?style=flat-square)](https://github.com/caffeinated/codex)
-[![Build Status](http://img.shields.io/travis/caffeinated/codex/master.svg?style=flat-square)](https://travis-ci.org/caffeinated/codex)
-[![Scrutinizer Code Quality](http://img.shields.io/scrutinizer/g/caffeinated/codex.svg?style=flat-square)](https://scrutinizer-ci.com/g/caffeinated/codex/?branch=master)
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
+[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
+[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
+[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0/big.png)](https://insight.sensiolabs.com/projects/2cdec527-cb61-4a38-8c44-775d30d55ea0)
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
 
-## Completely Open Source
-I built Codex to be open and available to *everyone*. Documentation is incredibly important that can make or break even the best development projects. This is why the code powering Codex is available on [GitHub](https://github.com/caffeinated/codex) under the [MIT license](https://tldrlegal.com/license/mit-license).
+Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
 
-In short, I want to see beautiful documentation being written everywhere! No excuses!
+Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-## Features
-- Laravel 4.2
-- Github-flavored Markdown
-- Host an unlimited number of *manuals* with accompanying *versions*
-- Code highlighting
-- Easy TOC / navigation system
-- SEO friendly URLs
-- Simple search
-- Supports Google Analytics
-- Supplied theme built on Bootstrap
-- Automatic header anchors
-- Supports multiple storage methods (Flat and Git available)
+## Official Documentation
+
+Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+
+### Contributing To Laravel
+
+**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+
+### License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

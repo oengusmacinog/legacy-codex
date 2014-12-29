@@ -15,9 +15,8 @@ ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
 	app_path().'/controllers',
+	app_path().'/models',
 	app_path().'/database/seeds',
-	app_path().'/repositories',
-	app_path().'/traits',
 
 ));
 
@@ -80,16 +79,3 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
-
-/*
-|--------------------------------------------------------------------------
-| Require The Bindings File
-|--------------------------------------------------------------------------
-|
-| Next we will load the bindings file for the application. This gives us
-| a nice separate location to store our bind definitions instead of
-| putting them all in the main routes file.
-|
-*/
-
-require app_path().'/bindings.php';
