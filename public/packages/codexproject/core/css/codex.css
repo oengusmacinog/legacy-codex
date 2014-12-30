@@ -2,10 +2,6 @@
 @import url(http://fonts.googleapis.com/css?family=Crete+Round);
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
 
-body, html, .row-offcanvas {
-	height: 100%;
-}
-
 body {
 	background: #eee;
 	font-family: 'Varela Round', sans-serif;
@@ -25,85 +21,19 @@ h1, h2, h3, h4, h5 {
     font-family: 'Crete Round', serif;
 }
 
-#sidebar {
-	width: inherit;
-	min-width: 250px;
-	max-width: 250px;
-	background-color: #2F3030;
-	float: left;
-	height: 100%;
-	position: relative;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-#main {
-	height: 100%;
-	overflow: auto;
-}
-
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
 }
 
-.toc {
-	padding-top: 10px;
-	margin-bottom: 60px;
-}
-
-.toc ul li {
-	color: #ddd;
-	border-bottom: 1px solid #555;
-	font-weight: 600;
-	font-size: 16px;
-	margin-bottom: 5px;
-	padding: 5px 0;
-	font-family: 'Crete Round', serif;
-}
-
-.toc ul li:hover {
-	color: #fff;
-}
-
-.toc ul li ul {
-	margin-bottom: 25px;
-}
-
-.toc ul li ul li {
-	border-bottom: none;
-	margin-bottom: 0;
-	padding: 0;
-	font-size: 14px;
-}
-
-.toc ul li ul li code {
-	background: #2f3030;
-	color: #ccc;
-}
-
-.toc ul li ul li a {
-	font-family: 'Varela Round', sans-serif;
-	color: #ccc;
-	font-size: 14px;
-}
-
-.toc ul li ul li a:hover {
-	color: #fff;
-	padding: 8px 0 6px 3px;
-	text-decoration: none;
-	font-size: 14px;
-}
-
-.toc ul li ul li:before {
-	content: "↳ ";
-	font-style: normal;
-	font-weight: normal;
-	text-decoration: inherit;
-	color: #555;
-	padding-right: 0.1em;
-	top: 10px;
-	left: 0;
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+	width: 250px;
+	text-align: center;
+	font-size: 1.5em;
+	background-color: #149c82;
+	margin-right: 5px;
 }
 
 .documentation {
@@ -232,4 +162,134 @@ pre {
 
 .bs-callout-info h4 {
     color: #5bc0de;
+}
+
+#wrapper {
+	padding-left: 0;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+	padding-left: 250px;
+}
+
+#sidebar-wrapper {
+	z-index: 1000;
+	position: fixed;
+	left: 250px;
+	width: 0;
+	height: 100%;
+	margin-left: -250px;
+	overflow-y: auto;
+	background: #2F3030;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+	width: 250px;
+}
+
+#page-content-wrapper {
+	width: 100%;
+}
+
+#wrapper.toggled #page-content-wrapper {
+	position: absolute;
+	margin-right: -250px;
+}
+
+.sidebar-nav {
+	position: absolute;
+	width: 250px;
+	padding: 12px;
+	margin-bottom: 60px;
+}
+
+.sidebar-nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sidebar-nav ul li {
+	color: #dddddd;
+	border-bottom: 1px solid #555555;
+	font-weight: 600;
+	font-size: 16px;
+	margin-bottom: 5px;
+	padding: 5px 0;
+	font-family: 'Crete Round', serif;
+}
+
+.sidebar-nav ul li:hover {
+	color: #ffffff;
+}
+
+.sidebar-nav ul li ul {
+	margin-bottom: 25px;
+}
+
+.sidebar-nav ul li ul li {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding: 0;
+	font-size: 14px;
+}
+
+.sidebar-nav ul li ul li code {
+	background: #2f3030;
+	color: #cccccc;
+}
+
+.sidebar-nav ul li ul li a {
+	font-family: 'Varela Round', sans-serif;
+	color: #cccccc;
+	font-size: 14px;
+}
+
+.sidebar-nav ul li ul li a:hover {
+	color: #ffffff;
+	padding: 8px 0 6px 3px;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.sidebar-nav ul li ul li:before {
+	content: "↳ ";
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	color: #555555;
+	padding-right: 0.1em;
+	top: 10px;
+	left: 0;
+}
+
+@media(min-width:768px) {
+	#wrapper {
+		padding-left: 250px;
+	}
+
+	#wrapper.toggled {
+		padding-left: 0;
+	}
+
+	#sidebar-wrapper {
+		width: 250px;
+	}
+
+	#wrapper.toggled #sidebar-wrapper {
+		width: 0;
+	}
+
+	#wrapper.toggled #page-content-wrapper {
+		position: relative;
+		margin-right: 0;
+	}
 }

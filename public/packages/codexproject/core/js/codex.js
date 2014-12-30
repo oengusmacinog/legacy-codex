@@ -1,7 +1,14 @@
 $(document).ready(function() {
 
+	console.log('Codex initialized.');
+
 	// Initialize nanoScroller
 	$(".nano").nanoScroller();
+
+	// Sidebar toggle
+	$("[data-toggle=offcanvas]").click(function() {
+		$("#wrapper").toggleClass("toggled");
+	});
 
 	// Bootstrap the tables
 	$(".documentation table").addClass("table table-striped table-bordered table-hover table-condensed");
