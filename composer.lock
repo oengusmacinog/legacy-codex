@@ -59,12 +59,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codexproject/core.git",
-                "reference": "4b60109c2f74a93c6c059928ca5e46dc9f96e0b1"
+                "reference": "e0419e0b1d8c60cee4268863dc131322cdb9308e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codexproject/core/zipball/4b60109c2f74a93c6c059928ca5e46dc9f96e0b1",
-                "reference": "4b60109c2f74a93c6c059928ca5e46dc9f96e0b1",
+                "url": "https://api.github.com/repos/codexproject/core/zipball/e0419e0b1d8c60cee4268863dc131322cdb9308e",
+                "reference": "e0419e0b1d8c60cee4268863dc131322cdb9308e",
                 "shasum": ""
             },
             "require": {
@@ -95,7 +95,7 @@
                 "laravel",
                 "markdown"
             ],
-            "time": "2014-12-30 01:08:48"
+            "time": "2014-12-30 21:15:37"
         },
         {
             "name": "d11wtq/boris",
