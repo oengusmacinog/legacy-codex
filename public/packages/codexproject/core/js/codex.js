@@ -1,13 +1,13 @@
 $(document).ready(function() {
-
-	console.log('Codex initialized.');
-
 	// Initialize nanoScroller
-	$(".nano").nanoScroller();
+	$(".nano").nanoScroller({
+		preventPageScrolling: true
+	});
 
 	// Sidebar toggle
 	$("[data-toggle=offcanvas]").click(function() {
 		$("#wrapper").toggleClass("toggled");
+		$("#collapse-sidebar-button").toggleClass("glyphicon-chevron-right");
 	});
 
 	// Bootstrap the tables

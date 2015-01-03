@@ -59,12 +59,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codexproject/core.git",
-                "reference": "4e8e13e9d5ade4344a9445dae663f17704f4ac5d"
+                "reference": "e5a78e090d45b27d4a92fe8b6d7f5f36cfaf1931"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codexproject/core/zipball/4e8e13e9d5ade4344a9445dae663f17704f4ac5d",
-                "reference": "4e8e13e9d5ade4344a9445dae663f17704f4ac5d",
+                "url": "https://api.github.com/repos/codexproject/core/zipball/e5a78e090d45b27d4a92fe8b6d7f5f36cfaf1931",
+                "reference": "e5a78e090d45b27d4a92fe8b6d7f5f36cfaf1931",
                 "shasum": ""
             },
             "require": {
@@ -95,7 +95,7 @@
                 "laravel",
                 "markdown"
             ],
-            "time": "2014-12-30 21:38:56"
+            "time": "2015-01-02 20:38:53"
         },
         {
             "name": "d11wtq/boris",
@@ -998,16 +998,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "937b04f1b0ee8f6d180e75a0830aac778ca4bcd6"
+                "reference": "365fcee430dfa4ace1fbc75737ca60ceea7eeeef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/937b04f1b0ee8f6d180e75a0830aac778ca4bcd6",
-                "reference": "937b04f1b0ee8f6d180e75a0830aac778ca4bcd6",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/365fcee430dfa4ace1fbc75737ca60ceea7eeeef",
+                "reference": "365fcee430dfa4ace1fbc75737ca60ceea7eeeef",
                 "shasum": ""
             },
             "require": {
@@ -1024,7 +1024,7 @@
                     "React\\Promise\\": "src/"
                 },
                 "files": [
-                    "src/functions.php"
+                    "src/functions_include.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1038,7 +1038,7 @@
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2014-10-15 20:05:57"
+            "time": "2014-12-30 13:32:42"
         },
         {
             "name": "stack/builder",

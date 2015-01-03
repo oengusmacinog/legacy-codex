@@ -29,11 +29,38 @@ h1, h2, h3, h4, h5 {
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-	width: 250px;
 	text-align: center;
+	width: 250px;
 	font-size: 1.5em;
 	background-color: #149c82;
 	margin-right: 5px;
+}
+
+.navbar-inverse .navbar-brand a {
+	text-decoration: none;
+	color: #eee;
+}
+
+.navbar-inverse .navbar-brand button {
+	width: 47px;
+	border-left: 1px solid #18bc9c;
+	margin-right: -15px;
+	margin-top: -18.5px;
+	display: inline-block;
+	/*line-height: 1.42857143;*/
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	background: none;
+	border: 1px solid transparent;
+	height: 61px;
 }
 
 .documentation {
