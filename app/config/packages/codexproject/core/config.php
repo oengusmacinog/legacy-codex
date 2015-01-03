@@ -51,13 +51,13 @@ return array(
     |--------------------------------------------------------------------------
     |
     | Allows you to define if you wish the versions be ordered by numerics
-    | first (1, 2, 3, a, b, c), or alphabetically (a, b, c, 1, 2, 3).
+    | first (2.0, 1.0, master), or alphabetically (master, 2.0, 1.0).
     |
-    | Supported: "numerical", "alphabetically"
+    | Supported: "numeric-first", "alpha-first"
     |
     */
 
-    'version_ordering' => 'numerical',
+    'version_ordering' => 'alpha-first',
 
     /*
     |--------------------------------------------------------------------------
