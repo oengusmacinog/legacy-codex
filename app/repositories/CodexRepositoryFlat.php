@@ -5,8 +5,6 @@ use Illuminate\Filesystem\Filesystem;
 
 class CodexRepositoryFlat extends AbstractCodexRepository
 {
-	use CacheTrait;
-
 	/**
 	 * The filesystem implementation.
 	 *
@@ -54,8 +52,7 @@ class CodexRepositoryFlat extends AbstractCodexRepository
 		$tocFile = $this->storagePath.'/'.$manual.'/'.$version.'/toc.md';
 
 		if ($this->files->exists($tocFile)) {
-			return $this->cached("$manual.$version.toc",
-				Markdown::parse($this->files->get($tocFile), $manual.'/'.$version));
+			return Markdown::parse($this->files->get($tocFile), $manual.'/'.$version);
 		} else {
 			return null;
 		}
@@ -74,11 +71,31 @@ class CodexRepositoryFlat extends AbstractCodexRepository
 		$pageFile = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
 
 		if ($this->files->exists($pageFile)) {
-			return $this->cached("$manual.$version.$pageFile",
-				Markdown::parse($this->files->get($pageFile), $manual.'/'.$version.'/'.dirname($page)));
+			return Markdown::parse($this->files->get($pageFile), $manual.'/'.$version.'/'.dirname($page));
 		} else {
 			App::abort(404);
 		}
+	}
+
+	/**
+	 * Get the given documentation page metadata.
+	 *
+	 * @param  string $manual
+	 * @param  string $version
+	 * @param  string $page
+	 * @return string
+	 */
+	public function getMeta($manual, $version, $page)
+	{
+		$pageFile = $this->storagePath.'/'.$manual.'/'.$version.'/'.$page.'.md';
+
+		if ($this->files->exists($pageFile)) {
+			$meta = Markdown::parseMeta($this->files->get($pageFile));
+
+			return $meta;
+		}
+
+		return null;
 	}
 
 	/**
@@ -91,7 +108,7 @@ class CodexRepositoryFlat extends AbstractCodexRepository
 	 */
 	public function search($manual, $version, $needle = '')
 	{
-		$results   = [];
+		$results   = array();
 		$directory = $this->storagePath.'/'.$manual.'/'.$version;
 		$files     = preg_grep('/toc\.md$/', $this->files->allFiles($directory),
 		 	PREG_GREP_INVERT);
@@ -100,16 +117,22 @@ class CodexRepositoryFlat extends AbstractCodexRepository
 			foreach ($files as $file) {
 				$haystack = file_get_contents($file);
 
+				if ($this->config->get('codex.route_base') !== '') {
+					$fileUrl  = '/'.$this->config->get('codex.route_base');
+					$fileUrl .= str_replace(array($this->config->get('codex.storage_path'), '.md'), '', (string)$file);
+				} else {
+					$fileUrl = str_replace(array($this->config->get('codex.storage_path'), '.md'), '', (string)$file);
+				}
+
 				if (strpos(strtolower($haystack), strtolower($needle)) !== false) {
-					$results[] = [
+					$results[] = array(
 						'title' => $this->getPageTitle((string)$file),
-						'url'   => str_replace([$this->config->get('codex.storage_path'), '.md'], '', (string)$file),
-					];
+						'url'   => $fileUrl,
+					);
 				}
 			}
 		}
 
 		return $results;
 	}
-
 }

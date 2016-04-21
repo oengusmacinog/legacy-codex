@@ -1,35 +1,52 @@
 @extends('layouts.master')
 
 @section('content')
-	<div class="container">
+	<div class="col-lg-12 documentation">
+		@if (isset($meta['breadcrumbs']))
 		<div class="row">
-			@if ( ! is_null($toc))
-				<div id="sidebar" class="col-md-3">
-					<nav class="toc">
-						{{ $toc }}
-					</nav>
-				</div>
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+				@foreach ($meta['breadcrumbs'] as $breadcrumb)
+					<li>{{ $breadcrumb }}</li>
+				@endforeach
+				</ol>
+			</div>
+		</div>
+		@endif
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<span class="pull-left">
+					@if (isset($meta['author']))
+						<small><span class="glyphicon glyphicon-user"></span> Authored By <b>{{ $meta['author'] }}</b></small>
+					@endif
+				</span>
 
-				<div class="col-md-9 documentation">
-					<p class="pull-right">
-						<small>{{ $lastUpdated }}</small>
-					</p>
+				<span class="pull-right">
+					<small><span class="glyphicon glyphicon-calendar"></span> {{ $lastUpdated }}</small>
+				</span>
+			</div>
+		</div>
 
-					{{ $content }}
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="col-md-3" id="tocify"></div>
 
-					@include('partials.footer')
-				</div>
-			@else
-				<div class="col-md-12 documentation">
-					<p class="pull-right">
-						<small>{{ $lastUpdated }}</small>
-					</p>
+				{{ $content }}
 
-					{{ $content }}
+				@if (isset($meta['resources']))
 
-					@include('partials.footer')
-				</div>
-			@endif
+				<h4>Resources</h4>
+				<hr>
+
+					@foreach ($meta['resources'] as $resource)
+						{{ $resource }}<br/>
+					@endforeach
+
+				@endif
+
+				@include('partials.footer')
+			</div>
 		</div>
 	</div>
 @stop

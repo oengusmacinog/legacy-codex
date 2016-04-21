@@ -8,24 +8,39 @@
 		<link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
 
 		@if (isset($currentManual))
-			<title>{{ $siteName }} - {{ $currentManual }} {{ $currentVersion }}</title>
+			<title>{{ Config::get('codex.site_name') }} - {{ $currentManual }} {{ $currentVersion }}</title>
 		@else
-			<title>{{ $siteName }}</title>
+			<title>{{ Config::get('codex.site_name') }}</title>
 		@endif
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="{{ asset('/assets/css/bootswatch/flatly.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('/assets/css/prettify/freshcut.css') }}">
+		<link rel="stylesheet" href="{{ asset('/assets/css/nano.css') }}">
+		<link rel="stylesheet" href="{{ asset('/assets/css/tocify.css') }}">
 		<link rel="stylesheet" href="{{ asset('/assets/css/codex.css') }}">
 	</head>
 	<body>
 		@include('partials.analytics_tracking')
 		@include('partials.navbar')
 
-		@yield('content')
+		<div id="wrapper">
+			@include('partials.sidebar')
+
+			<div id="page-content-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						@yield('content')
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- Javascript -->
 		<script src="{{ asset('/assets/js/jquery-2.1.1.min.js') }}"></script>
+		<script src="{{ asset('/assets/js/jquery-ui-widget.min.js') }}"></script>
+		<script src="{{ asset('/assets/js/jquery.nanoscroller.min.js') }}"></script>
+		<script src="{{ asset('/assets/js/jquery.tocify.min.js') }}"></script>
 		<script src="{{ asset('/assets/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('/assets/js/prettify/run_prettify.js') }}"></script>
 		<script src="{{ asset('/assets/js/codex.js') }}"></script>

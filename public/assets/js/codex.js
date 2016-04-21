@@ -1,17 +1,25 @@
 $(document).ready(function() {
 
-	// affix the side menu when it is placed on the left
-	// add listener to remove affix when window is resized below 1000px for responsiveness
-	$(window).resize(function() {
-		if (! $(".toc").length) return;
+	console.log('Codex initialized.');
 
-		if (window.innerWidth > 1000) {
-			$(".toc").affix();
-		} else {
-			$(window).off('.affix');
-			$(".toc").removeClass("affix affix-top").removeData("bs.affix");
-		}
-	}).trigger('resize');
+	$("#tocify").tocify({
+		context: ".documentation",
+		selectors: "h2,h3",
+		extendPage: false,
+		showAndHide: false
+	});
+
+	// Initialize nanoScroller
+	$(".nano").nanoScroller({
+		preventPageScrolling: true
+	});
+
+	// Sidebar toggle
+	$("[data-toggle=offcanvas]").click(function() {
+		console.log('Toggle sidebar button clicked.');
+		$("#wrapper").toggleClass("toggled");
+		$("#collapse-sidebar-button").toggleClass("glyphicon-chevron-right");
+	});
 
 	// Bootstrap the tables
 	$(".documentation table").addClass("table table-striped table-bordered table-hover table-condensed");

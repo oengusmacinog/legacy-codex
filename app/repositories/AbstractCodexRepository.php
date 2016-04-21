@@ -51,16 +51,16 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 		$manuals = $this->getManuals();
 
 		if (count($manuals) > 1) {
-			if ( ! is_null($this->config->get('codex.default_manual'))) {
+			if ($this->config->get('codex.default_manual') != '') {
 				return $this->config->get('codex.default_manual');
 			} else {
 				return strval($manuals[0]);
 			}
 		} elseif (count($manuals) === 1) {
 			return strval($manuals[0]);
-		} else {
-			return null;
 		}
+
+		return null;
 	}
 
 	/**
@@ -73,15 +73,6 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	{
 		$versions = $this->getVersions($manual);
 
-		switch ($this->config->get('codex.version_ordering')) {
-			case 'numerical':
-				sort($versions, SORT_NATURAL);
-			break;
-			case 'alphabetically':
-				sort($versions, SORT_NUMERIC);
-			break;
-		}
-
 		return $versions[0];
 	}
 
@@ -92,7 +83,11 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	 */
 	public function getManuals()
 	{
-		return $this->getDirectories($this->storagePath);
+		$manuals = $this->getDirectories($this->storagePath);
+		
+		sort($manuals);
+
+		return $manuals;
 	}
 
 	/**
@@ -103,9 +98,32 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	 */
 	public function getVersions($manual)
 	{
+		$alpha     = array();
+		$numeric   = array();
 		$manualDir = $this->storagePath.'/'.$manual;
+		$versions  = $this->getDirectories($manualDir);
 
-		return $this->getDirectories($manualDir);
+		foreach ($versions as $version) {
+			if (ctype_alpha(substr($version, 0, 2))) {
+				$alpha[] = $version;
+			} else {
+				$numeric[] = $version;
+			}
+		}
+
+		sort($alpha);
+		rsort($numeric);
+
+		switch ($this->config->get('codex.version_ordering')) {
+			case 'numeric-first':
+				$versions = array_merge($numeric, $alpha);
+			break;
+			case 'alpha-first':
+				$versions = array_merge($alpha, $numeric);
+			break;
+		}
+
+		return $versions;
 	}
 
 	/**
@@ -116,21 +134,19 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	 */
 	public function getDirectories($path)
 	{
-		if ( ! $this->files->exists($path)) {
+		if ($this->files->exists($path) === false) {
 			App::abort(404);
 		}
 
 		$directories = $this->files->directories($path);
-		$folders     = [];
+		$folders     = array();
 
 		if (count($directories) > 0) {
-
-		}
-
-		foreach ($directories as $dir) {
-			$dir       = str_replace('\\', '/', $dir);
-			$folder    = explode('/', $dir);
-			$folders[] = end($folder);
+			foreach ($directories as $dir) {
+				$dir       = str_replace('\\', '/', $dir);
+				$folder    = explode('/', $dir);
+				$folders[] = end($folder);
+			}
 		}
 
 		return $folders;
@@ -145,12 +161,18 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 	 */
 	protected function getPageTitle($page)
 	{
-		$file  = fopen($page, 'r');
-		$title = fgets($file);
+		$meta = Markdown::parseMeta($this->files->get($page));
 
-		fclose($file);
+		if (isset($meta) and isset($meta['title'])) {
+			return "# {$meta['title']}";
+		} else {
+			$file  = fopen($page, 'r');
+			$title = fgets($file);
 
-		return $title;
+			fclose($file);
+
+			return $title;
+		}			
 	}
 
 	/**
@@ -169,8 +191,8 @@ abstract class AbstractCodexRepository implements CodexRepositoryInterface
 			$timestamp = DateTime::createFromFormat('U', filemtime($page));
 
 			return $timestamp->format($this->config->get('codex.modified_timestamp'));
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 }
